@@ -10,6 +10,7 @@ const initialFormData = {
   contribNotes: '', authorName: '', authorGh: '', authorEmail: '',
   authorLinkedin: '', authorWebsite: '', customTech: '', license: 'MIT',
   supportMsg: '', supportBmac: '', supportKofi: '', supportPatreon: '', supportGhSponsors: '',
+  abstractText: '', paperLink: '', datasetLink: '', methodology: '', bibtexCitation: '',
 };
 
 function buildDefaultSectionState() {
@@ -101,10 +102,17 @@ export function useReadmeState() {
         tagline: template.tag,
         description: template.desc,
         features: template.features,
+        abstractText: template.abstractText || '',
+        paperLink: template.paperLink || '',
+        datasetLink: template.datasetLink || '',
+        methodology: template.methodology || '',
+        bibtexCitation: template.bibtexCitation || '',
       };
-      scheduleSave(next, sectionState, new Set(template.techs), selectedBadges);
+      const nextSections = { ...sectionState, academic: !!template.abstractText };
+      scheduleSave(next, nextSections, new Set(template.techs), selectedBadges);
       return next;
     });
+    setSectionState(prev => ({ ...prev, academic: !!template.abstractText }));
     setSelectedTechs(new Set(template.techs));
   }, [sectionState, selectedBadges, scheduleSave]);
 

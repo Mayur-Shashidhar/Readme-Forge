@@ -2,6 +2,7 @@ export const SECTIONS = [
   { id: 'title', label: 'Project Title', icon: '📌', el: 'sec-title', default: true },
   { id: 'description', label: 'Description', icon: '📋', el: 'sec-description', default: true },
   { id: 'features', label: 'Features', icon: '✨', el: 'sec-features', default: true },
+  { id: 'academic', label: 'Academic Details', icon: '📚', el: 'sec-academic', default: false },
   { id: 'techstack', label: 'Tech Stack', icon: '🛠️', el: 'sec-techstack', default: true },
   { id: 'installation', label: 'Installation', icon: '🚀', el: 'sec-installation', default: true },
   { id: 'structure', label: 'Folder Structure', icon: '📁', el: 'sec-structure', default: true },
@@ -89,6 +90,18 @@ export const TEMPLATES = {
     desc: 'A command-line tool that helps developers automate repetitive tasks. Supports plugins, configuration files, and shell completions.',
     features: '### ⚙️ Commands\n- Multiple sub-commands\n- Interactive prompts\n\n### 🔌 Plugins\n- Plugin system\n- Custom hooks\n\n### 🐚 Shell\n- Bash/Zsh/Fish completions\n- Cross-platform support',
   },
+  academic: {
+    name: 'Research Project',
+    tag: 'Reproducible research, paper artifacts, and dataset access',
+    techs: ['Python', 'PyTorch'],
+    desc: 'A research repository for sharing paper artifacts, reproducible experiments, dataset access details, and citation information.',
+    features: '### Research Artifacts\n- Reproducible experiment scripts\n- Evaluation notebooks and figures\n\n### Results\n- Baseline comparisons\n- Ablation studies\n\n### Reuse\n- Dataset access instructions\n- BibTeX citation block',
+    abstractText: 'This project investigates [research problem] using [method or model]. It provides reproducible code, dataset access instructions, and evaluation artifacts so students and researchers can inspect, cite, and extend the work.',
+    methodology: '### Data Collection\n- Describe the dataset source, inclusion criteria, and preprocessing steps.\n\n### Experimental Setup\n- Document baselines, model configuration, hardware, and hyperparameters.\n\n### Evaluation\n- List the metrics, validation protocol, and statistical tests used.',
+    paperLink: 'https://arxiv.org/abs/0000.00000',
+    datasetLink: 'https://doi.org/10.0000/example-dataset',
+    bibtexCitation: '@article{researchproject2026,\n  title={Research Project Title},\n  author={First Author and Second Author},\n  journal={Conference or Journal Name},\n  year={2026}\n}',
+  },
   mobile: {
     name: 'Mobile App',
     tag: 'Cross-platform mobile app',
@@ -130,4 +143,5 @@ export const FIELD_IDS = [
   'videoUrl', 'imageUrls', 'apiDocs', 'apiBase', 'contribNotes', 'authorName',
   'authorGh', 'authorEmail', 'authorLinkedin', 'authorWebsite', 'customTech',
   'supportMsg', 'supportBmac', 'supportKofi', 'supportPatreon', 'supportGhSponsors',
+  'abstractText', 'paperLink', 'datasetLink', 'methodology', 'bibtexCitation',
 ];

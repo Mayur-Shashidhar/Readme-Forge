@@ -116,6 +116,42 @@ export default function EditorPanel({
           </div>
         </EditorSection>
 
+        <EditorSection num="3A" title="Academic / Research Details" hidden={!sectionState.academic}>
+          <div>
+            <label>ABSTRACT</label>
+            <textarea className="textInput" id="abstractText" style={{ minHeight: 100 }}
+              placeholder="Summarize the research problem, approach, and key findings."
+              value={formData.abstractText} onChange={e => updateField('abstractText', e.target.value)} />
+            <WordCount text={formData.abstractText} />
+          </div>
+          <div className="two-col">
+            <div>
+              <label>PAPER LINK</label>
+              <input type="url" id="paperLink" placeholder="https://arxiv.org/abs/..."
+                value={formData.paperLink} onChange={e => updateField('paperLink', e.target.value)} />
+            </div>
+            <div>
+              <label>DATASET ACCESS</label>
+              <input type="url" id="datasetLink" placeholder="https://doi.org/... or https://huggingface.co/datasets/..."
+                value={formData.datasetLink} onChange={e => updateField('datasetLink', e.target.value)} />
+            </div>
+          </div>
+          <div>
+            <label>METHODOLOGY</label>
+            <textarea className="textInput" id="methodology" style={{ minHeight: 100 }}
+              placeholder={'### Data Collection\n- Describe dataset source and preprocessing\n\n### Experiments\n- Describe model, baselines, and evaluation metrics'}
+              value={formData.methodology} onChange={e => updateField('methodology', e.target.value)} />
+            <WordCount text={formData.methodology} />
+          </div>
+          <div>
+            <label>CITATIONS / BIBTEX</label>
+            <textarea className="textInput" id="bibtexCitation" style={{ minHeight: 120 }}
+              placeholder={'@article{yourpaper2026,\n  title={Your Paper Title},\n  author={First Author and Second Author},\n  journal={Conference or Journal},\n  year={2026}\n}'}
+              value={formData.bibtexCitation} onChange={e => updateField('bibtexCitation', e.target.value)} />
+            <WordCount text={formData.bibtexCitation} />
+          </div>
+        </EditorSection>
+
         <EditorSection num={3} title="Features" hidden={!sectionState.features}>
           <div>
             <label>KEY FEATURES — use "### Category" for groups, "- item" for bullets</label>

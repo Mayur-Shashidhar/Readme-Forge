@@ -97,6 +97,7 @@ export function generateMarkdown({ formData, sectionState, selectedTechs, select
     contribNotes, license, authorName, authorGh, authorEmail,
     authorLinkedin, authorWebsite, customTech, supportMsg,
     supportBmac, supportKofi, supportPatreon, supportGhSponsors,
+    abstractText, paperLink, datasetLink, methodology, bibtexCitation,
   } = formData;
 
   const name = projName || 'My Project';
@@ -129,6 +130,7 @@ export function generateMarkdown({ formData, sectionState, selectedTechs, select
     md += '---\n\n';
     md += '## 📋 Table of Contents\n\n';
     if (on('description')) md += '- [Description](#-description)\n';
+    if (on('academic')) md += '- [Academic / Research Details](#academic--research-details)\n';
     if (on('features')) md += '- [Features](#-features)\n';
     if (on('techstack')) md += '- [Tech Stack](#-tech-stack)\n';
     if (on('installation')) md += '- [Installation](#-installation)\n';
@@ -146,6 +148,31 @@ export function generateMarkdown({ formData, sectionState, selectedTechs, select
     md += (description || '_Add a description of your project here._') + '\n\n';
     if (demoUrl) md += `🔗 **Live Demo:** [${demoUrl}](${demoUrl})\n\n`;
     md += '---\n\n';
+  }
+
+  if (on('academic')) {
+    const hasAcademicContent = abstractText || paperLink || datasetLink || methodology || bibtexCitation;
+    if (hasAcademicContent) {
+      md += '## Academic / Research Details\n\n';
+      const academicBadges = [];
+      if (paperLink) academicBadges.push(`[![Paper](https://img.shields.io/badge/Paper-Read%20Now-blue)](${paperLink})`);
+      if (datasetLink) academicBadges.push(`[![Dataset](https://img.shields.io/badge/Dataset-Access-green)](${datasetLink})`);
+      if (academicBadges.length) md += academicBadges.join(' ') + '\n\n';
+      if (abstractText) md += `### Abstract\n\n${abstractText}\n\n`;
+      if (paperLink) md += `### Paper Link\n\n[${paperLink}](${paperLink})\n\n`;
+      if (datasetLink) md += `### Dataset Access\n\n[${datasetLink}](${datasetLink})\n\n`;
+      if (methodology) {
+        md += '### Methodology\n\n';
+        methodology.split('\n').forEach(line => {
+          const l = line.trimEnd();
+          if (l.trim().startsWith('###')) md += '\n' + l.trim() + '\n';
+          else if (l.trim()) md += (l.trim().startsWith('-') ? l : '- ' + l.trim()) + '\n';
+        });
+        md += '\n';
+      }
+      if (bibtexCitation) md += `### Citation\n\n\`\`\`bibtex\n${bibtexCitation}\n\`\`\`\n\n`;
+      md += '---\n\n';
+    }
   }
 
   if (on('features') && features) {

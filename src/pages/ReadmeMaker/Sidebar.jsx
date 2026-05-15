@@ -22,6 +22,7 @@ export default function Sidebar({
               {key === 'ml' && '🤖 ML / AI'}
               {key === 'api' && '⚡ Backend API'}
               {key === 'cli' && '💻 CLI Tool'}
+              {key === 'academic' && '🎓 Academic / Research'}
               {key === 'mobile' && '📱 Mobile App'}
               {key === 'lib' && '📦 Library'}
               {key === 'hackathon' && '🏆 Hackathon'}
