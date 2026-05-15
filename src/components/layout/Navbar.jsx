@@ -61,6 +61,26 @@ export default function Navbar() {
         >
           How To Use
         </Link>
+        <a
+          href="https://github.com/Mohit-368/ReadmeForge"
+          target="_blank"
+          rel="noreferrer"
+          className="site-nav-link site-nav-link--gh mobile-only"
+          onClick={() => setMenuOpen(false)}
+        >
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+            <polyline points="16 18 22 12 16 6" /><polyline points="8 6 2 12 8 18" />
+          </svg>
+          Source
+        </a>
+        <button
+          type="button"
+          className="theme-toggle mobile-only"
+          title="Toggle dark/light mode"
+          onClick={toggleTheme}
+        >
+          {theme === 'dark' ? '🌙' : '☀️'}
+        </button>
         {/* Source link moved to actions area so it stays beside theme toggle */}
       </div>
 
@@ -69,7 +89,7 @@ export default function Navbar() {
           href="https://github.com/Mohit-368/ReadmeForge"
           target="_blank"
           rel="noreferrer"
-          className="site-nav-link site-nav-link--gh"
+          className="site-nav-link site-nav-link--gh desktop-only"
           title="View source on GitHub"
         >
           <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
@@ -79,7 +99,8 @@ export default function Navbar() {
         </a>
 
         <button
-          className="theme-toggle"
+          type="button"
+          className="theme-toggle desktop-only"
           id="themeToggle"
           title="Toggle dark/light mode"
           onClick={toggleTheme}

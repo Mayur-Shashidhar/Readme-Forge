@@ -2772,6 +2772,10 @@ body.light-mode .gh-preview {
   background: rgba(56,189,248,0.08);
 }
 
+.desktop-only {
+  display: inline-flex;
+}
+
 .nav-hamburger {
   display: none;
   flex-direction: column;
@@ -2843,6 +2847,36 @@ body.light-mode .gh-preview {
   .site-nav-link--gh {
     margin-left: 0;
   }
+
+  .desktop-only {
+    display: none !important;
+  }
+
+  /* Show a duplicate "Source" link only inside the mobile dropdown */
+  .mobile-only {
+    display: inline-flex !important;
+  }
+
+  .site-nav-links.open .theme-toggle.mobile-only {
+    display: inline-flex !important;
+    width: 100%;
+    justify-content: center;
+    padding: 14px 16px;
+    border-radius: 8px;
+    height: auto;
+  }
+
+  /* When nav is open (dropdown), ensure mobile-only link is visible for testing */
+  .site-nav-links.open .mobile-only {
+    display: inline-flex;
+  }
+
+  /* Hide the mobile-only source link by default on larger screens */
+}
+
+/* Desktop: hide mobile-only link */
+.mobile-only {
+  display: none;
 }
 
 /* =======================================================
